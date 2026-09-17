@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Java on 四月日出🌅</title>
+    <link>http://localhost:1313/alexblog/tags/java/</link>
+    <description>Recent content in Java on 四月日出🌅</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 18 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/alexblog/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java笔试感受</title>
+      <link>http://localhost:1313/alexblog/posts/java%E7%AC%94%E8%AF%95%E6%84%9F%E5%8F%97/</link>
+      <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/alexblog/posts/java%E7%AC%94%E8%AF%95%E6%84%9F%E5%8F%97/</guid>
+      <description>&lt;p&gt;今天参加了第一场笔试，恒生java工程师。总体的感觉还是正常，有会的也有不会的。两套卷，一个是技术，一个是综合。&lt;/p&gt;
+&lt;p&gt;技术篇分为两个部分，选择题和大题。选择题考了java基础、设计模式、计网、linux指令、数据库。大题是一个数据库、一个编程题和一个算法题。数据库因为最近在学，也在经常写语句所以不算难，东西也都复习到了，就是还有内容没学完就也有不会的，但是考前突击了下，恰好碰到了。编程题和算法题，思路大致都有，但是编码就有些许困难。编译器没有提示功能，写一些复杂的我就忘了。java语言的工地也不是很强。需要提高java的编码能力了！&lt;/p&gt;
+&lt;p&gt;综合篇也是两部分，一个是个人性格测评，一个是类似 “行测” 的选择题。性格测评就没什么好说的了，逻辑能力测试就有一点过了。15道选择题，求实找规律、初中的计算题、普通的逻辑问题。很没趣味又有点烦人。因为找不出规律或者算不出答案就开始心慌。&lt;/p&gt;
+&lt;p&gt;整个测试一共是2个小时，坐在凳子上，很累。明天还有笔试，我似乎找到了自己能力的不足之处，需要花时间和精力去补足。虽然内容很多，但是只要不停止学习就一定能有收获，所以要抓紧时间，学习不停歇！加油，希望秋招顺利，收到offer！&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

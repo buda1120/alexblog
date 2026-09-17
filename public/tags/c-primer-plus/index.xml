@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>C Primer Plus on 四月日出🌅</title>
+    <link>http://localhost:1313/alexblog/tags/c-primer-plus/</link>
+    <description>Recent content in C Primer Plus on 四月日出🌅</description>
+    <generator>Hugo</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Fri, 11 Oct 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/alexblog/tags/c-primer-plus/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>C语言(一)</title>
+      <link>http://localhost:1313/alexblog/posts/c%E8%AF%AD%E8%A8%80%E4%B8%80/</link>
+      <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/alexblog/posts/c%E8%AF%AD%E8%A8%80%E4%B8%80/</guid>
+      <description>&lt;p&gt;复习C语言，记录一下重要的知识点，参考书为《C Primer Plus 第六版》&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;一、初识C语言&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;产生：1972年，贝尔实验室的Dannis Ritch 和 Ken Thompson 在开发UNIX操作系统的时候设计了C语言。在过去40年里，C语言已成为最重要、最流行的编程语言之一。&lt;/p&gt;
+&lt;p&gt;C语言的优点：高效性， 可移植性，强大而灵活，面向程序员&lt;/p&gt;
+&lt;p&gt;　　　  缺点：涉及指针的编程错误难以察觉；有很多运算符，可以写出复杂的‘晦涩难懂的代码（可以看看 国际C语言混乱代码大赛IOCCC，很有趣）&lt;/p&gt;
+&lt;p&gt;应用范围：小型计算机，PC，大型机；C++也是以C语言为基础。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;高级编程语言与编译器&lt;/strong&gt;：&lt;/p&gt;
+&lt;p&gt;计算机编程语言有高级语言和低级语言，像C、JAVA、Pascal等比较接近自然语言的就是高级语言，汇编语言等用指令或01代码来表示的就是低级语言。高级语言更接近人类，低级语言更靠近机器。当然用两种类型的语言写的程序执行所需要的时间也是不同的，高级语言花费的时间要长一些。计算机执行一个C/C++程序需要经过编译、链接然后才能执行。&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;images/%E7%BC%96%E8%AF%91.png&#34;&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;程序执行的步骤&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;GNU编译器：&lt;/p&gt;
+&lt;p&gt;GNU项目始于1987年，是一个开发大量免费软件的集合（GNU means &amp;ldquo;GNU&amp;rsquo;s Not UNIX&amp;rdquo;  即GNU不是UNIX ）。GNU编译器集合（也被称为GCC，其中包含GCC C编译器）是该项目的产品之一。用 gcc 命令便可调用GCC C编译器。许多使用 gcc 的系统都用 cc 作为 gcc 的别名。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;二、C语言概述&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;典型的C程序：&lt;/p&gt;
+&lt;p&gt;　　　　　　# include　　　　//预处理指令&lt;/p&gt;
+&lt;p&gt;　　　　　　int main (void)　　//main()总是第一个被调用的函数&lt;/p&gt;
+&lt;p&gt;　　　　　　function a( )　　　//函数是C程序的构造块，将函数中包含语句&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

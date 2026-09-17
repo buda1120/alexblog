@@ -1,11 +1,54 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Tags on Alex的个人博客</title>
+    <title>Tags on 四月日出🌅</title>
     <link>http://localhost:1313/alexblog/tags/</link>
-    <description>Recent content in Tags on Alex的个人博客</description>
+    <description>Recent content in Tags on 四月日出🌅</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
+    <lastBuildDate>Fri, 03 Jul 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/alexblog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>求职</title>
+      <link>http://localhost:1313/alexblog/tags/%E6%B1%82%E8%81%8C/</link>
+      <pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/alexblog/tags/%E6%B1%82%E8%81%8C/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>生活</title>
+      <link>http://localhost:1313/alexblog/tags/%E7%94%9F%E6%B4%BB/</link>
+      <pubDate>Fri, 03 Jul 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/alexblog/tags/%E7%94%9F%E6%B4%BB/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>面试</title>
+      <link>http://localhost:1313/alexblog/tags/%E9%9D%A2%E8%AF%95/</link>
+      <pubDate>Thu, 14 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/alexblog/tags/%E9%9D%A2%E8%AF%95/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Java</title>
+      <link>http://localhost:1313/alexblog/tags/java/</link>
+      <pubDate>Fri, 18 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/alexblog/tags/java/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>C</title>
+      <link>http://localhost:1313/alexblog/tags/c/</link>
+      <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/alexblog/tags/c/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>C Primer Plus</title>
+      <link>http://localhost:1313/alexblog/tags/c-primer-plus/</link>
+      <pubDate>Fri, 11 Oct 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/alexblog/tags/c-primer-plus/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

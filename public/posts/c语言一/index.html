@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto" data-theme="auto">
+
+<head><script src="/alexblog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=alexblog/livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>C语言(一) | 四月日出🌅</title>
+<meta name="keywords" content="C, C Primer Plus">
+<meta name="description" content="复习C语言，记录一下重要的知识点，参考书为《C Primer Plus 第六版》
+一、初识C语言
+产生：1972年，贝尔实验室的Dannis Ritch 和 Ken Thompson 在开发UNIX操作系统的时候设计了C语言。在过去40年里，C语言已成为最重要、最流行的编程语言之一。
+C语言的优点：高效性， 可移植性，强大而灵活，面向程序员
+　　　  缺点：涉及指针的编程错误难以察觉；有很多运算符，可以写出复杂的‘晦涩难懂的代码（可以看看 国际C语言混乱代码大赛IOCCC，很有趣）
+应用范围：小型计算机，PC，大型机；C&#43;&#43;也是以C语言为基础。
+高级编程语言与编译器：
+计算机编程语言有高级语言和低级语言，像C、JAVA、Pascal等比较接近自然语言的就是高级语言，汇编语言等用指令或01代码来表示的就是低级语言。高级语言更接近人类，低级语言更靠近机器。当然用两种类型的语言写的程序执行所需要的时间也是不同的，高级语言花费的时间要长一些。计算机执行一个C/C&#43;&#43;程序需要经过编译、链接然后才能执行。
+
+
+
+程序执行的步骤
+
+
+GNU编译器：
+GNU项目始于1987年，是一个开发大量免费软件的集合（GNU means &ldquo;GNU&rsquo;s Not UNIX&rdquo;  即GNU不是UNIX ）。GNU编译器集合（也被称为GCC，其中包含GCC C编译器）是该项目的产品之一。用 gcc 命令便可调用GCC C编译器。许多使用 gcc 的系统都用 cc 作为 gcc 的别名。
+二、C语言概述
+典型的C程序：
+　　　　　　# include　　　　//预处理指令
+　　　　　　int main (void)　　//main()总是第一个被调用的函数
+　　　　　　function a( )　　　//函数是C程序的构造块，将函数中包含语句">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/alexblog/posts/c%E8%AF%AD%E8%A8%80%E4%B8%80/">
+<link crossorigin="anonymous" href="/alexblog/assets/css/stylesheet.00a14d2e086d406153b7b46460a3019904b82c3e17eaced2a24a10770c3985f1.css" integrity="sha256-AKFNLghtQGFTt7RkYKMBmQS4LD4X6s7SokoQdww5hfE=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/alexblog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/alexblog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/alexblog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/alexblog/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/alexblog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/alexblog/posts/c%E8%AF%AD%E8%A8%80%E4%B8%80/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="header-nav">
+        <div class="logo">
+            <a href="http://localhost:1313/alexblog/" accesskey="h" title="四月日出🌅 (Alt + H)">四月日出🌅</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu" class="menu">
+            <li>
+                <a href="http://localhost:1313/alexblog/archives/" title="归档">
+                    <span>归档</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/alexblog/categories/daily/" title="随记">
+                    <span>随记</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/alexblog/categories/study/" title="学习日志">
+                    <span>学习日志</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/alexblog/categories/work/" title="工作">
+                    <span>工作</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/alexblog/tags/" title="标签">
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/alexblog/search/" title="搜索">
+                    <span>搜索</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+            <a href="/alexblog/">Home</a>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <a href="/alexblog/posts/">Posts</a>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
+        <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+</nav>
+    <h1 class="post-title entry-hint-parent">
+      C语言(一)
+    </h1>
+    <div class="post-meta">
+
+<span title='2019-10-11 00:00:00 +0000 UTC'>October 11, 2019</span>&nbsp;·&nbsp;<span>2 min</span>
+
+</div>
+  </header> 
+
+  <div class="post-content md-content"><p>复习C语言，记录一下重要的知识点，参考书为《C Primer Plus 第六版》</p>
+<p><strong>一、初识C语言</strong></p>
+<p>产生：1972年，贝尔实验室的Dannis Ritch 和 Ken Thompson 在开发UNIX操作系统的时候设计了C语言。在过去40年里，C语言已成为最重要、最流行的编程语言之一。</p>
+<p>C语言的优点：高效性， 可移植性，强大而灵活，面向程序员</p>
+<p>　　　  缺点：涉及指针的编程错误难以察觉；有很多运算符，可以写出复杂的‘晦涩难懂的代码（可以看看 国际C语言混乱代码大赛IOCCC，很有趣）</p>
+<p>应用范围：小型计算机，PC，大型机；C++也是以C语言为基础。</p>
+<p><strong>高级编程语言与编译器</strong>：</p>
+<p>计算机编程语言有高级语言和低级语言，像C、JAVA、Pascal等比较接近自然语言的就是高级语言，汇编语言等用指令或01代码来表示的就是低级语言。高级语言更接近人类，低级语言更靠近机器。当然用两种类型的语言写的程序执行所需要的时间也是不同的，高级语言花费的时间要长一些。计算机执行一个C/C++程序需要经过编译、链接然后才能执行。</p>
+<!-- raw HTML omitted -->
+<p><img loading="lazy" src="images/%E7%BC%96%E8%AF%91.png"></p>
+<!-- raw HTML omitted -->
+<p>程序执行的步骤</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>GNU编译器：</p>
+<p>GNU项目始于1987年，是一个开发大量免费软件的集合（GNU means &ldquo;GNU&rsquo;s Not UNIX&rdquo;  即GNU不是UNIX ）。GNU编译器集合（也被称为GCC，其中包含GCC C编译器）是该项目的产品之一。用 gcc 命令便可调用GCC C编译器。许多使用 gcc 的系统都用 cc 作为 gcc 的别名。</p>
+<p><strong>二、C语言概述</strong></p>
+<p>典型的C程序：</p>
+<p>　　　　　　# include　　　　//预处理指令</p>
+<p>　　　　　　int main (void)　　//main()总是第一个被调用的函数</p>
+<p>　　　　　　function a( )　　　//函数是C程序的构造块，将函数中包含语句</p>
+<p>　　　　　　function b( )</p>
+<p>C语言有6种语句组成：标号语句，复合语句，表达式语句，选择语句，迭代语句，跳转语句。</p>
+<p>程序的组成：</p>
+<p>1、#include指令和头文件</p>
+<p># include &lt;stdio.h&gt; 相当于把 stdio.h 文件中的所有内容都输入到该行所在的位置上，就是一种copy-paste 的操作</p>
+<p># include 是一条C预处理指令，通常C编译器在编译前会对源代码做一些准备工作，即预处理。stdio.h文件是_标准输入/输出_ 头文件，在大多数情况下，头文件包含了编译器创建最终可执行程序需要的信息，它帮助编译器把程序正确地组合在一起。</p>
+<p>2、main( )函数</p>
+<p>C程序一定是从main( )函数开始执行，圆括号是用于识别main( )是一个函数。函数是C程序的基本模块。</p>
+<p>3、注释</p>
+<p>注释有两种方式：</p>
+<p>　　　　/*这是一段注释*/ 　　　符号之间的内容都是注释</p>
+<p>　　　　//这是一行注释　　　　仅该行被注释</p>
+<p>4、花括号、函数体和块</p>
+<p>{</p>
+<p>&hellip;&hellip;&hellip;&hellip;..</p>
+<p>}</p>
+<p>花括号（ { } ）标记函数体的开始和结束，不能省略。花括号还用于把函数多条语句合并为一个单元或块。</p>
+<p>5、声明</p>
+<p>声明是C语言最重要的特性之一。</p>
+<p>int num；　　//这是一条声明</p>
+<p>int是一种数据类型， num是一个变量名称。编译器使用这些信息为num变量在内存中分配存储空间。int是_关键字_，表示一种基本数据类型； num是标识符，即一个变量、函数或其他实体的名称。</p>
+<p>在C语言中，所有变量必须先声明再使用。</p>
+<p>声明变量的数据类型，计算机才能正确地存储、读取和解释数据。给变量命名时要使有意义的变量名或标识符（必要时可以写下注释）。C语言区分大小写。</p>
+<p>6、赋值</p>
+<p>num = 1;　　/*这是一条赋值表达式语句*/</p>
+<p>C语言是通过赋值运算符而不是赋值语句完成赋值操作。</p>
+<p>7、return语句</p>
+<p>int main(void) 中的int 表明 main( ) 函数应返回一个整数。。有返回值的函数都要return 语句。</p>
+<p><strong>多个函数举例：</strong></p>
+<p>GNU编译器：</p>
+<p>GNU项目始于1987年，是一个开发大量免费软件的集合（GNU means &ldquo;GNU&rsquo;s Not UNIX&rdquo;  即GNU不是UNIX ）。GNU编译器集合（也被称为GCC，其中包含GCC C编译器）是该项目的产品之一。用 gcc 命令便可调用GCC C编译器。许多使用 gcc 的系统都用 cc 作为 gcc 的别名。</p>
+<p><strong>二、C语言概述</strong></p>
+<p>典型的C程序：</p>
+<p>　　　　　　# include　　　　//预处理指令</p>
+<p>　　　　　　int main (void)　　//main()总是第一个被调用的函数</p>
+<p>　　　　　　function a( )　　　//函数是C程序的构造块，将函数中包含语句</p>
+<p>　　　　　　function b( )</p>
+<p>C语言有6种语句组成：标号语句，复合语句，表达式语句，选择语句，迭代语句，跳转语句。</p>
+<p>程序的组成：</p>
+<p>1、#include指令和头文件</p>
+<p># include &lt;stdio.h&gt; 相当于把 stdio.h 文件中的所有内容都输入到该行所在的位置上，就是一种copy-paste 的操作</p>
+<p># include 是一条C预处理指令，通常C编译器在编译前会对源代码做一些准备工作，即预处理。stdio.h文件是_标准输入/输出_ 头文件，在大多数情况下，头文件包含了编译器创建最终可执行程序需要的信息，它帮助编译器把程序正确地组合在一起。</p>
+<p>2、main( )函数</p>
+<p>C程序一定是从main( )函数开始执行，圆括号是用于识别main( )是一个函数。函数是C程序的基本模块。</p>
+<p>3、注释</p>
+<p>注释有两种方式：</p>
+<p>　　　　/*这是一段注释*/ 　　　符号之间的内容都是注释</p>
+<p>　　　　//这是一行注释　　　　仅该行被注释</p>
+<p>4、花括号、函数体和块</p>
+<p>{</p>
+<p>&hellip;&hellip;&hellip;&hellip;..</p>
+<p>}</p>
+<p>花括号（ { } ）标记函数体的开始和结束，不能省略。花括号还用于把函数多条语句合并为一个单元或块。</p>
+<p>5、声明</p>
+<p>声明是C语言最重要的特性之一。</p>
+<p>int num；　　//这是一条声明</p>
+<p>int是一种数据类型， num是一个变量名称。编译器使用这些信息为num变量在内存中分配存储空间。int是_关键字_，表示一种基本数据类型； num是标识符，即一个变量、函数或其他实体的名称。</p>
+<p>在C语言中，所有变量必须先声明再使用。</p>
+<p>声明变量的数据类型，计算机才能正确地存储、读取和解释数据。给变量命名时要使有意义的变量名或标识符（必要时可以写下注释）。C语言区分大小写。</p>
+<p>6、赋值</p>
+<p>num = 1;　　/*这是一条赋值表达式语句*/</p>
+<p>C语言是通过赋值运算符而不是赋值语句完成赋值操作。</p>
+<p>7、return语句</p>
+<p>int main(void) 中的int 表明 main( ) 函数应返回一个整数。。有返回值的函数都要return 语句。</p>
+<p><strong>多个函数举例：</strong></p>
+<pre tabindex="0"><code># include &lt;stdio.h&gt;
+
+void bulter(void);　　//函数原型（告知编译器在程序中要使用该函数，指明了函数属性）
+
+）
+
+in main(void)
+
+{
+
+　　printf(&#34;........&#34;);
+
+　　butler();　　//函数调用 （告知编译器正在使用该函数）
+
+　　return 0;
+
+}
+
+void bulter(void)　　//函数定义（源代码）
+
+{
+
+　　printf(&#34;!!!!!!&#34;);
+
+}
+</code></pre><p>合适执行bulter() 函数取决于它在main() 函数中被调用的位置，而不是它定义在文件中的位置。C标准建议，要为程序中用到的所有函数提供函数原型。</p>
+<p>合适执行bulter() 函数取决于它在main() 函数中被调用的位置，而不是它定义在文件中的位置。C标准建议，要为程序中用到的所有函数提供函数原型。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/alexblog/tags/c/">C</a></li>
+      <li><a href="http://localhost:1313/alexblog/tags/c-primer-plus/">C Primer Plus</a></li>
+    </ul>
+<nav class="paginav">
+  <a class="prev" href="http://localhost:1313/alexblog/posts/java%E7%AC%94%E8%AF%95%E6%84%9F%E5%8F%97/">
+    <span class="title">« Prev</span>
+    <span>Java笔试感受</span>
+  </a>
+  <a class="next" href="http://localhost:1313/alexblog/posts/%E6%B1%87%E7%BC%96%E5%8E%9F%E7%90%86%E7%9A%84%E5%AD%A6%E4%B9%A0/">
+    <span class="title">Next »</span>
+    <span>汇编原理的学习</span>
+  </a>
+</nav>
+
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="http://localhost:1313/alexblog/">四月日出🌅</a></span> · 
+
+    
+    
+    <span>
+        Powered by
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var toplink = document.getElementById("top-link");
+    window.onscroll = function () {
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
+        } else {
+            toplink.classList.add("hidden");
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

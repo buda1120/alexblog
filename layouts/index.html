@@ -1,0 +1,61 @@
+{{- define "main" }}
+
+<!-- {{- if .Title }}
+<header class="page-header">
+  <h1>{{ .Title }}</h1>
+</header>
+{{- end }} -->
+
+{{- /* 1. 首页欢迎词 (homeInfoParams) */ -}}
+{{- if .Site.Params.homeInfoParams }}
+  {{- partial "home_info.html" . }}
+{{- end }}
+
+{{- /* 2. 仅获取 content/posts/ 目录下的常规文章进行分页 */ -}}
+{{- $posts := where .Site.RegularPages "Type" "in" "posts" }}
+{{- $pag := .Paginate $posts }}
+{{- $pages := $pag.Pages }}
+
+{{- /* 3. 循环输出文章卡片 */ -}}
+{{- range $pages }}
+<article class="post-entry">
+  <header class="entry-header">
+    <h2>
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+    </h2>
+  </header>
+  {{- if (ne .Params.hideSummary true) }}
+  <div class="entry-content">
+    <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
+  </div>
+  {{- end }}
+  <footer class="entry-footer">
+    {{- partial "post_meta.html" . }}
+  </footer>
+</article>
+{{- end }}
+
+{{- /* 4. 紧凑居中的四按钮快捷翻页导航 + 页码提示 */ -}}
+{{- if gt $pag.TotalPages 1 }}
+<footer class="page-footer">
+  <nav class="pagination" style="display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 30px;">
+    
+    {{- if $pag.HasPrev }}
+    <a class="prev" href="{{ $pag.First.URL }}" style="margin: 0; padding: 6px 12px; font-size: 14px;">« 首页</a>
+    <a class="prev" href="{{ $pag.Prev.URL }}" style="margin: 0; padding: 6px 12px; font-size: 14px;">‹ 上一页</a>
+    {{- end }}
+
+    <span style="font-size: 13px; color: var(--secondary); padding: 0 4px;">
+      {{ $pag.PageNumber }} / {{ $pag.TotalPages }}
+    </span>
+
+    {{- if $pag.HasNext }}
+    <a class="next" href="{{ $pag.Next.URL }}" style="margin: 0; padding: 6px 12px; font-size: 14px;">下一页 ›</a>
+    <a class="next" href="{{ $pag.Last.URL }}" style="margin: 0; padding: 6px 12px; font-size: 14px;">末页 »</a>
+    {{- end }}
+
+  </nav>
+</footer>
+{{- end }}
+
+{{- end }}

@@ -1,0 +1,12 @@
+/* 缩减首页 homeInfoParams 卡片本身的内边距与底边距 */
+.first-entry {
+    min-height: auto !important; /* 消除默认的最小高度限制 */
+    padding-top: 20px !important; /* 原默认值较大，调小上边距 */
+    padding-bottom: 20px !important; /* 调小下边距 */
+    margin-bottom: 15px !important; /* 缩减与下方第一篇文章卡片的间距 */
+}
+
+/* 如果觉得标题和正文之间的间距也偏大，可以微调 */
+.first-entry .entry-header h1 {
+    margin-bottom: 10px !important;
+}

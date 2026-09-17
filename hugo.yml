@@ -1,0 +1,80 @@
+baseURL: 'https://buda1120.github.io/alexblog/'
+locale: 'zh-cn'
+title: "四月日出🌅"
+theme: 'PaperMod'
+
+# 新版 Hugo 限制每页 4 条文章的标准写法
+pagination:
+  pagerSize: 4
+
+# 语法高亮
+markup:
+  highlight:
+    style: 'monokai'
+
+# 确保 Taxonomies（分类系统）正常加载
+taxonomies:
+  category: categories
+  tag: tags
+
+# PaperMod 专属参数设置
+params:
+  # 1. 主题模式：light（亮色）、dark（暗色）、auto（自动
+  defaultTheme: 'auto'
+  disableThemeToggle: false  # 是否隐藏右上角切换亮/暗颜色的太阳月亮按钮
+
+  # 2. 文章页细节优化
+  ShowReadingTime: true       # 显示预计阅读时间
+  # ShowShareButtons: true      # 显示分享按钮
+  ShowPostNavLinks: true      # 显示上下篇文章导航
+  ShowPaginator: true         # 开启首页/列表页底部的翻页链接展示
+  ShowCodeCopyButtons: true   # 显示代码块一键复制按钮
+  ShowToc: true               # 显示文章目录
+  TocOpen: true               # 默认展开目录
+  ShowBreadCrumbs: true       # 显示面包屑路径
+  
+  
+  # 3. 首页 homeInfo 模式
+  homeInfoParams:
+    Title: Welcome to Alex's blog👋🏼 记录我的新想法...
+    # Content: 记录我的新想法...
+
+  profileMode:
+    enabled: false  # 设为 false，首页将直接展示文章列表并开启分页
+
+  # socialIcons: # optional
+  #   - name: "github"
+  #     url: "https://github.com/buda1120"
+    # - name: "<platform 2>"
+    #   url: "<link2>"
+  
+  
+  #paginateWindow: 1   # （可选）在页码导航处显示具体页码/总页数（例如 Page 1 of 5）
+
+# 开启 JSON 输出，使 PaperMod 搜索功能生效
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # 必须包含 JSON
+
+menu:
+  main:
+    - name: "归档"
+      url: "archives/"
+      weight: 1 # 控制菜单按钮的排列顺序
+    - name: "随记"
+      url: "categories/daily/"      # 对应随记分类
+      weight: 2
+    - name: "学习日志"
+      url: "categories/study/"   # 对应学习日志分类
+      weight: 3
+    - name: "工作"
+      url: "categories/work/"       # 对应工作分类
+      weight: 4
+    - name: "标签"
+      url: "tags/"                  # 点击直接进入全站所有标签汇总页
+      weight: 5
+    - name: "搜索"
+      url: "search/"                # 对应搜索页面
+      weight: 6
