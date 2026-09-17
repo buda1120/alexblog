@@ -23,6 +23,12 @@ params:
   defaultTheme: 'auto'
   disableThemeToggle: false  # 是否隐藏右上角切换亮/暗颜色的太阳月亮按钮
 
+  label:
+    text: "四月日出"
+    # 图标路径，建议放到 static/favicon.ico 或 static/images/logo.png
+    icon: "images/mySitesLogo.png" 
+    iconHeight: 52 # 可选，控制图标高度
+
   # 2. 文章页细节优化
   ShowReadingTime: true       # 显示预计阅读时间
   # ShowShareButtons: true      # 显示分享按钮
