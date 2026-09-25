@@ -146,6 +146,31 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">尝试新方式，重新部署Blog
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>用到的参考文档，按照遇到问题的顺序：
+dockerDocs：https://docs.docker.com/desktop/install/linux/ubuntu/
+docker命令走代理获取镜像源（参考走代理部分）：https://blog.csdn.net/Lichen0196/article/details/137355517
+阮一峰docker教程：https://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html
+一步到位wordpress：https://www.cnblogs.com/tdsj/p/16820590.html
+mysql旧数据迁移：https://blog.harumonia.moe/sql-frm-myi-myd-files/
+过了这么久，终于重新把博客部署了。自从电脑坏了修过、换了系统后，博客就再也无法启动了。趁着十一的几天休息，完成了这件事。
+第一次部署是纯手工的方式，在Windows系统装了nginx、PHP环境，很久才弄出来大约花了2天的时间。这次用更接近新技术的工具–docker，省时省力，也不会有那么多错误，不过也花了1天。主要原因是第一次使用docker，完全不会，只因系统是Linux，手动装一些deb包很麻烦，命令行下载才是最快、最可靠不会出错的方式，感恩Linux。
+最首先得一个困难就是Docker的资源库在中国被屏蔽了，想要的镜像完全没办法访问。真是出师未捷身先死，技术学习上也要面对政治障碍，可悲。装docker简单，直接apt获取，但访问资源却困难重重，看了网上的方法：要么换源，要么用代理。网络上提供的源都存在不稳定性，不知道那一天就面临被封锁。所以我选择了代理，研究了许久，在一片中文文章里学习到，如果本地配置好了代理，docker的网络直接设置为localhost就可以了，这样可以直连dockerhub拉取镜像资源。
+拉取了mysql8和wordpress的镜像，配置、启动很艰难的完成了，最后数据库总是连不上，原来是localhost的问题，在docker里面mysql的ip地址不是121.0.0.1，而是需要通过inspect找出来的。这点耗费了近3小时，因为数据库连不上导致我反复重新配置实例，删完装，装好连不上又删。再就是迁移数据了，之前dump的不是sql文件，导致无法直接运行，需要用mysql5复制文件夹到数据库软件里展示，也花了不少时间。到最终大工告成已是第二天的下午了。
+记录下期间提供帮助的文章和相关的指令
+1.解决apt-get update的错误：在软件管理软件中，取消勾选对应出错的包，对于publickey出错的，解决办法 sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys xxxxxxxx 2.使用docker pull时出现404错误：Get &#34;https://registry-1.docker.io/v2/&#34;: context deadline exceeded ，原因：dockerhub被ban，解决办法配置代理 $ /etc/systemd/system/docker.service.d/proxy.conf 写入 [service] Environment=&#34;HTTP_PROXY=localhost:7890&#34; Environment=&#34;HTTPS_PROXY=localhost:7890&#34; 3.装好docker后配置：使用非root用户管理docker sudo groupadd docker sudo usermod -aG docker $USER newgrp docker docker run hello-world 4.安装配置wordpress和数据库连接的关键点--数据库的ip地址 不能在宿主机上进入mysql，先进mysql的docker容器，再进数据库：docker exec -it mysql-cillian bash 查找容器的IP ：docker inspect mysql-cillian |grep 172 再进数据库： mysql -h 172.17.0.3 -uroot -p 5.迁移数据，使用mysql5.x，在mysql workbench中导出sql文件，重新导入mysql8.x中 INSERT INTO new_table_name SELECT * FROM old_table_name WHERE xxx=xxx </p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2024-10-02 00:00:00 +0000 UTC'>October 2, 2024</span>&nbsp;·&nbsp;<span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 尝试新方式，重新部署Blog" href="http://localhost:1313/alexblog/posts/%E5%B0%9D%E8%AF%95%E6%96%B0%E6%96%B9%E5%BC%8F%E9%87%8D%E6%96%B0%E9%83%A8%E7%BD%B2blog/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">日记形式的记录。。。
     </h2>
   </header>
@@ -199,32 +224,6 @@ password：无
 
 <span title='2023-02-22 00:00:00 +0000 UTC'>February 22, 2023</span>&nbsp;·&nbsp;<span>1 min</span></footer>
   <a class="entry-link" aria-label="post link to 关于Xampp数据库管理" href="http://localhost:1313/alexblog/posts/%E5%85%B3%E4%BA%8Exampp%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">挂梯打不开IMDB问题的解决过程
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>最近到年末了，想要总结一下书影音记录，由于各种原因在很久之前注销了豆瓣账号，故使用goodreads和imdb来记录。
-使用谷歌浏览器Google引擎访问www.imdb.com结果出现“网络错误”的提示，但同时其他的网站都能正常访问。首先认为imdb的网址可能被梯子的审计ban了，所以用手机访问了一下，出现的是www.m.imdb.com，很明显与代理没关系，且PC也无法访问imdb的移动端地址。于是想到Ping一下网址，结果能有传包，但响应是127开头的本地ip（刚开始没理解是什么含义）。我又换Edge访问，结果出现了PHP探针（第一次见，根本不知道是什么…），显示的是phpstudy的内容，服务器、网络连接之类的信息全展示出来了，完全疑惑？？？
-PHP探针
-php探针是用来探测空间、服务器运行状况和PHP信息用的，探针可以实时查看服务器硬盘资源、内存占用、网卡流量、系统负载、服务器时间等信息。
-这根本不是我需要的内容，以为是phpstudy里面的网址配置影响了imdb导致重定向到php的页面了，于是很主动地卸载了phpstudy（还确认博客没被影响~），但是问题仍没有解决…很绝望。各种搜索，终于找到了相关内容_“某网站突然不能访问了，结果发现网站IP地址变成127.0.0.1了？”，根据回答想到了DNS污染（DNS Cache Pollution）。于是开始搜索解决办法，主要有2种解决方法：更换DNS服务器，修改hosts文件。自然是选择第一种方法，但还是检查了hosts文件（总是不记得位置，找半天_C:\Windows\System32\drivers\etc），没有问题。接着去找了靠谱的DNS服务器地址，选了谷歌的8.8.8.8，还更新了DNS缓存，然后imdb就能正常访问了。根本原因就是使用了路由器运营商的DNS，是被污染的DNS。
-记录使用到的命令：
-查看网络信息：ipconfig -帮助 ipconfig /? -查看详细信息 ipconfig /all，可以找到DNS服务器的信息 -查看DNS缓存信息：ipconfig /displaydns -刷新DNS缓存：ipconfig /flushdns 检测DNS污染：nslookup -nslookup www.imdb.com DNS服务器地址 -使用多个DNS服务器对比，常用8.8.8.8，1.1.1.1，114.114.114.114 响应ip若为192开头就是有问题了 修改DNS服务器则要在设置中改：
-控制面板-&gt;网络和共享中心-&gt;更改适配器设置-&gt;选择正在使用的网络右键“属性”-&gt;选择“Internet协议版本4”查看属性-&gt;选择“使用下面的DNS服务器地址”填入地址
-或者 设置(Win &#43; I)-&gt;网络和Internet-&gt;高级网络设置-&gt;更改适配器选项-&gt;….（同上）
-IPv4修改DNS服务器
-还可以选择“高级”-&gt;DNS页添加或删除多个DNS服务器地址 原本设置的是谷歌的DNS，但后来刷新代理服务时，大部分服务都连接超时了，所以选用了国内的DNS，即144南京信风网络科技有限公司：http://www.114dns.com/
-IMDB成功访问
-</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2022-12-30 00:00:00 +0000 UTC'>December 30, 2022</span>&nbsp;·&nbsp;<span>1 min</span></footer>
-  <a class="entry-link" aria-label="post link to 挂梯打不开IMDB问题的解决过程" href="http://localhost:1313/alexblog/posts/%E6%8C%82%E6%A2%AF%E6%89%93%E4%B8%8D%E5%BC%80imdb%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

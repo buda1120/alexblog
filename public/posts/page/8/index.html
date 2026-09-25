@@ -146,6 +146,32 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">挂梯打不开IMDB问题的解决过程
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>最近到年末了，想要总结一下书影音记录，由于各种原因在很久之前注销了豆瓣账号，故使用goodreads和imdb来记录。
+使用谷歌浏览器Google引擎访问www.imdb.com结果出现“网络错误”的提示，但同时其他的网站都能正常访问。首先认为imdb的网址可能被梯子的审计ban了，所以用手机访问了一下，出现的是www.m.imdb.com，很明显与代理没关系，且PC也无法访问imdb的移动端地址。于是想到Ping一下网址，结果能有传包，但响应是127开头的本地ip（刚开始没理解是什么含义）。我又换Edge访问，结果出现了PHP探针（第一次见，根本不知道是什么…），显示的是phpstudy的内容，服务器、网络连接之类的信息全展示出来了，完全疑惑？？？
+PHP探针
+php探针是用来探测空间、服务器运行状况和PHP信息用的，探针可以实时查看服务器硬盘资源、内存占用、网卡流量、系统负载、服务器时间等信息。
+这根本不是我需要的内容，以为是phpstudy里面的网址配置影响了imdb导致重定向到php的页面了，于是很主动地卸载了phpstudy（还确认博客没被影响~），但是问题仍没有解决…很绝望。各种搜索，终于找到了相关内容_“某网站突然不能访问了，结果发现网站IP地址变成127.0.0.1了？”，根据回答想到了DNS污染（DNS Cache Pollution）。于是开始搜索解决办法，主要有2种解决方法：更换DNS服务器，修改hosts文件。自然是选择第一种方法，但还是检查了hosts文件（总是不记得位置，找半天_C:\Windows\System32\drivers\etc），没有问题。接着去找了靠谱的DNS服务器地址，选了谷歌的8.8.8.8，还更新了DNS缓存，然后imdb就能正常访问了。根本原因就是使用了路由器运营商的DNS，是被污染的DNS。
+记录使用到的命令：
+查看网络信息：ipconfig -帮助 ipconfig /? -查看详细信息 ipconfig /all，可以找到DNS服务器的信息 -查看DNS缓存信息：ipconfig /displaydns -刷新DNS缓存：ipconfig /flushdns 检测DNS污染：nslookup -nslookup www.imdb.com DNS服务器地址 -使用多个DNS服务器对比，常用8.8.8.8，1.1.1.1，114.114.114.114 响应ip若为192开头就是有问题了 修改DNS服务器则要在设置中改：
+控制面板-&gt;网络和共享中心-&gt;更改适配器设置-&gt;选择正在使用的网络右键“属性”-&gt;选择“Internet协议版本4”查看属性-&gt;选择“使用下面的DNS服务器地址”填入地址
+或者 设置(Win &#43; I)-&gt;网络和Internet-&gt;高级网络设置-&gt;更改适配器选项-&gt;….（同上）
+IPv4修改DNS服务器
+还可以选择“高级”-&gt;DNS页添加或删除多个DNS服务器地址 原本设置的是谷歌的DNS，但后来刷新代理服务时，大部分服务都连接超时了，所以选用了国内的DNS，即144南京信风网络科技有限公司：http://www.114dns.com/
+IMDB成功访问
+</p>
+  </div>
+  <footer class="entry-footer">
+
+<span title='2022-12-30 00:00:00 +0000 UTC'>December 30, 2022</span>&nbsp;·&nbsp;<span>1 min</span></footer>
+  <a class="entry-link" aria-label="post link to 挂梯打不开IMDB问题的解决过程" href="http://localhost:1313/alexblog/posts/%E6%8C%82%E6%A2%AF%E6%89%93%E4%B8%8D%E5%BC%80imdb%E9%97%AE%E9%A2%98%E7%9A%84%E8%A7%A3%E5%86%B3%E8%BF%87%E7%A8%8B/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">观『她和她的她』有感
     </h2>
   </header>
@@ -202,22 +228,6 @@
 
 <span title='2022-08-21 00:00:00 +0000 UTC'>August 21, 2022</span>&nbsp;·&nbsp;<span>1 min</span></footer>
   <a class="entry-link" aria-label="post link to 网站修复" href="http://localhost:1313/alexblog/posts/%E7%BD%91%E7%AB%99%E4%BF%AE%E5%A4%8D/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">兼职面试整理
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>兼职找了三天，不好找，我的要求也多，只想每天4小时，还只想做短期的，所以更难找了。昨天下午三点去一家门店面试了，工作挺繁忙的，填了在线简历做了测评，店长面试了，问我为什么时间是从下午5：30开始，别的时间要做什么呢？我被问倒了，胡乱解释说要睡觉、吃饭做家务这些，当场看出店长面色变化，结果也可想而知，不通过。晚上又联系招兼职的人，约了另外一个门店，下午一点面试，我过去了，结果这家更离谱。店面差不多大，流程也相同，一点种不太忙所以人也不多。店长问我为什么不继续找工作，在这里兼职4、5个小时赚的钱能够花吗，期望的工作是什么样子的呢。很冲击，我说被告诉工作时间是4小时，但这边直接随便安排时间且周末要8小时，这点完全没意料到。问我期望的工作时间是几点开始几点结束，我说早上8点到晚上10点，转钟不能接受，结果说店面排班可能会晚上11点到凌晨这样，我表示接受不了。又问我既然出来找工作，为什么设置那么多条件呢，这么苛刻，吃不了苦，而且还是慢性子。我没有怎么解释，聊到这里其实结果已经说明白了。最后店长用提点的口吻说“你学历这么高，这里兼职不适合，最好还是找全职工作，到时候有全职工作了再过来兼职也是可以的。”，说完我简单回复了一句好就走了。
-面完这个很难受，感觉有些屈辱，因为信息不对。手机聊天里说的是4小时规定时间段，周末可以出勤；现实里却是浮动的时长，时间点也不确定，随店长排班。最让我不平的是说我吃不了苦也慢性子，这两点就不符合。原本我就没打算咋吃苦耐劳，兼职还要吃苦？！这是工作时间的问题。性子慢这一点却是打击很大的，店长提出来的时候，我才意识到，仅仅通过说话就能察觉出来，是这半年我变得身心都倦怠了吗，说话感觉非常拖沓和沉重，做事也有气无力的，问题很严重了。这样去找工作，真的是一个很大的阻碍，并且对自己的信心也会有打击，我还是得快些改掉这个问题，变得和常人差不多才行，警惕！！！
-</p>
-  </div>
-  <footer class="entry-footer">
-
-<span title='2022-07-14 00:00:00 +0000 UTC'>July 14, 2022</span>&nbsp;·&nbsp;<span>1 min</span></footer>
-  <a class="entry-link" aria-label="post link to 兼职面试整理" href="http://localhost:1313/alexblog/posts/b-interview/%E5%85%BC%E8%81%8C%E9%9D%A2%E8%AF%95%E6%95%B4%E7%90%86/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
