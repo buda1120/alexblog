@@ -10,3 +10,55 @@
 .first-entry .entry-header h1 {
     margin-bottom: 10px !important;
 }
+
+/* 缩减 homeInfo 容器顶部的上边距 */
+.first-entry.home-info {
+    margin-top: 10px !important;    /* 默认通常较大，调小此值可使标题大幅上移 */
+    min-height: auto !important;    /* 消除最小高度撑开的空白 */
+    padding-top: 10px !important;   /* 缩减容器内部上边距 */
+}
+
+/* 针对移动端屏幕（宽度小于 768px）进行专属微调 */
+@media screen and (max-width: 768px) {
+    /* 缩小顶部导航栏下方的外边距 */
+    .nav {
+        margin-bottom: 5px !important;
+    }
+    
+    /* 进一步缩减 homeInfo 顶部的间距 */
+    .first-entry.home-info {
+        margin-top: 5px !important;
+        padding-top: 5px !important;
+    }
+
+    /* 如果 homeInfo 内部标题上方还有间距，可以一并缩减 */
+    .entry-header h1 {
+        margin-top: 0 !important;
+    }
+}
+
+/* 给整页 body 设置背景图 */
+body {
+    background-image: url('/alexblog/images/bg.jpg') !important; /* 注意相对路径写法，不加开头斜杠 */
+    background-size: cover;          /* 图片全屏铺满 */
+    background-position: center;     /* 图片居中对齐 */
+    background-repeat: no-repeat;    /* 不重复平铺 */
+    background-attachment: fixed;    /* 页面滚动时背景固定 */
+}
+
+/* 为了防止 PaperMod 默认的卡片背景遮挡住背景图，将内容容器设为半透明或透出 */
+.main, .post-single {
+    background: transparent !important;
+}
+
+/* （可选）让文章内容容器带有微弱的半透明白色卡片背景，保证文字阅读清晰 */
+.post-content {
+    background: rgba(255, 255, 255, 0.85);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* 暗黑模式下适应半透明黑框 */
+.dark .post-content {
+    background: rgba(30, 30, 30, 0.85);
+}

@@ -1,6 +1,6 @@
 baseURL: 'https://buda1120.github.io/alexblog/'
 locale: 'zh-cn'
-title: "四月日出🌅"
+title: "四月日出"
 theme: 'PaperMod'
 
 # 新版 Hugo 限制每页 4 条文章的标准写法
@@ -24,10 +24,16 @@ params:
   disableThemeToggle: false  # 是否隐藏右上角切换亮/暗颜色的太阳月亮按钮
 
   label:
-    text: "四月日出"
     # 图标路径，建议放到 static/favicon.ico 或 static/images/logo.png
     icon: "images/mySitesLogo.png" 
     iconHeight: 52 # 可选，控制图标高度
+
+  assets:
+    # 基础 Favicon（通常 16x16 或 32x32）
+    favicon: "favicon.png"
+    favicon16x16: "favicon.png"
+    favicon32x32: "favicon.png"
+    apple_touch_icon: "favicon.png"
 
   # 2. 文章页细节优化
   ShowReadingTime: true       # 显示预计阅读时间
@@ -78,9 +84,9 @@ menu:
     - name: "工作"
       url: "categories/work/"       # 对应工作分类
       weight: 4
-    - name: "标签"
-      url: "tags/"                  # 点击直接进入全站所有标签汇总页
-      weight: 5
+    # - name: "标签"
+    #   url: "tags/"                  # 点击直接进入全站所有标签汇总页
+    #   weight: 5
     - name: "搜索"
       url: "search/"                # 对应搜索页面
       weight: 6
